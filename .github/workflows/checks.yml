@@ -13,11 +13,15 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN}}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
         
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
       - name: Test
         run: docker-compose run --rm app sh -c "python3 manage.py test"
-
