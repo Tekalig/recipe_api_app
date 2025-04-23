@@ -1,0 +1,23 @@
+---
+name: Checks
+
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Docker Hub Auth
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN}}
+        
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Test
+        run: docker-compose run --rm app sh -c "python3 manage.py test"
+
