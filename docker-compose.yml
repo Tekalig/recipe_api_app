@@ -12,3 +12,20 @@ services:
       - ./launge:/app
     command: >
       sh -c "python3 manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=recipedb
+      - DB_USER=besu
+      - DB_PASS=teka@hazi21
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: besu
+      POSTGRES_PASSWORD: teka@hazi21
+      POSTGRES_DB: recipedb
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+
+volumes:
+  dev-db-data:
