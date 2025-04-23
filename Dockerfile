@@ -1,9 +1,11 @@
-FROM python:alpine
+FROM python:3.12-alpine
 LABEL maintainer="tekahazi.com"
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+# Prevent Python from buffering stdout and stderr
+ENV PYTHONUNBUFFERED=1
 
-COPY ./requirements /tmp/requirements.txt
+COPY ./requirements.txt /tmp/requirements.txt
 COPY ./launge /app
 WORKDIR /app
 
