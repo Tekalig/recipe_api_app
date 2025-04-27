@@ -24,4 +24,4 @@ jobs:
           sudo apt-get install -y docker-compose
 
       - name: Test
-        run: docker-compose run --rm app sh -c "python3 manage.py migrate python3 manage.py wait_for_db && python3 manage.py test"
+        run: docker-compose run --rm app sh -c "python3 manage.py wait_for_db && python3 manage.py migrate  && python3 manage.py test"
