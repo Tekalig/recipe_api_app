@@ -20,7 +20,7 @@ class UserAdmin(BaseUserAdmin):
     ]
 
     fieldsets = (
-        (None, {"fields": ("email", "password")}),
+        (None, {"fields": ("email", "name", "password")}),
         (
             _("Permissions"),
             {
