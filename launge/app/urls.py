@@ -35,4 +35,5 @@ urlpatterns = [
         name="swagger-ui",
     ),
     path("api/user/", include("user.urls"), name="user"),
+    path("api/recipe/", include("recipe.urls"), name="recipe"),
 ]
